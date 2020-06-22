@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+.carouselDiv {
+  background-position: bottom;
+  background-size: contain;
+  height: 600px;
+}
+
+.carouselImgDiv {
+  background-position: bottom;
+  background-size: contain;
+  height: 600px;
+}
+
+.brandText {
+  color: white;
+}
+
+.outsideDiv {
+  padding-top: 50px;
+}
+
+.jumboAlign {
+  text-align: center;
+}

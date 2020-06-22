@@ -1,0 +1,29 @@
+{
+  "name": "isg-learning-curve-team-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://harshil_sharma_007@bitbucket.org/t4sg/isg-learning-curve-team-2.git"
+  },
+  "author": "Harshil",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/t4sg/isg-learning-curve-team-2#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "googleapis": "^52.1.0",
+    "mongoose": "^5.9.19",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
