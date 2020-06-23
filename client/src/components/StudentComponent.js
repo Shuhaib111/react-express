@@ -1,9 +1,60 @@
 import React, { Component } from "react";
+import { NavbarBrand, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class StudentLanding extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout() {
+    //window.open("http://localhost:5000/logout", "_self");
+    window.open("http://localhost:5000/logout", "_self");
+  }
+
   render() {
     return (
       <React.Fragment>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <NavbarBrand>Team 9</NavbarBrand>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className="nav-item ">
+                <a className="nav-link" href="/">
+                  Home <span className="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link text-lg-right">Welcome</Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Button
+                  className="nav-link text-lg-right"
+                  onClick={this.handleLogout}
+                >
+                  Logout
+                </Button>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div className="container outsideDiv">
           <div className="jumbotron jumboAlign">
             <h1>Welcome to the playground!</h1>

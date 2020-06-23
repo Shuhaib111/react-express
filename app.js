@@ -8,11 +8,7 @@ const cookieSession = require("cookie-session");
 require("./auth");
 
 const app = express();
-
-app.use(express.static(path.join(__dirname, "client/build")));
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
+app.use(express.json());
 
 app.use(
   cookieSession({
@@ -36,31 +32,31 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
+    origin: true,
+    credentials: true,
   })
 );
 
 // Example protected and unprotected routes
-app.get("/", (req, res) => res.render("login"));
+//app.get("/", (req, res) => res.render("login"));
 app.get("/failed", (req, res) => res.send("You Failed to log in!"));
 
 // In this route you can see that if the user is logged in u can acess his info in: req.user
 // app.get('/good', isLoggedIn, (req, res) => res.send(`Welcome ${req.user.displayName}!`))
-app.get("/good", isLoggedIn, (req, res) => res.render("student"));
+app.use("/good", isLoggedIn, (req, res) => {
+  console.log("y");
+  res.redirect("http://localhost:3000/good");
+});
 
-// Auth Routes
 app.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-app.get(
+app.use(
   "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/failed" }),
+  passport.authenticate("google", { failureRedirect: "/" }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect("/good");
   }
 );
@@ -68,27 +64,13 @@ app.get(
 app.get("/logout", (req, res) => {
   req.session = null;
   req.logout();
-  res.redirect("/");
+  res.redirect("http://localhost:3000");
 });
 
-// configure mongoose to mongoDB//
-
-/*configering express*/
-app.use(express.json());
-
-/*routes*/
-/*app.use( '/', ( req ,res )  =>{
-  res.send("welcome");
-
-});
-/*app.get( '/', ( req ,res )  =>{
-  res.render("hello");*/
-
-// GET /auth/google/callback
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
+// app.use(express.static(path.join(__dirname, "client/public")));
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "client/public/", "index.html"));
+// });
 
 app.listen(5000, () => {
   console.log("server running on port 5000");

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { NavbarBrand } from "reactstrap";
 import CarouselImg from "./CarouselComponent";
+//import axios from "axios";
 
 class Main extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class Main extends Component {
 
   handleLogin() {
     window.open("http://localhost:5000/google", "_self");
+    // axios
+    //   .get("/google")
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err));
   }
 
   render() {
@@ -34,7 +39,7 @@ class Main extends Component {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <form className="form-inline">
-                  <Link to="/google">
+                  <Link>
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-light"

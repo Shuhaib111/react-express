@@ -19,7 +19,7 @@ passport.use(
       clientID:
         "247676410560-8gotvmacb72rigd2vk07vb1hk99e23o2.apps.googleusercontent.com",
       clientSecret: "yUe-V7SsSDKNICxJCEf-YvHj",
-      callbackURL: "http://172.26.1.214.xip.io/google/callback",
+      callbackURL: "http://localhost:5000/google/callback",
     },
     function (token, tokenSecret, profile, done) {
       //check is profile_id is registered in db
